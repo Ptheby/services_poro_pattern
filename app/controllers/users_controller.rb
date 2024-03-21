@@ -6,10 +6,11 @@ class UsersController < ApplicationController
     else
       render json: user, status: :unprocessable_entity
     end
-    def index
-      users = UserService::Base.filter_users(params)
-      render json: users, status: :ok
-    end
+  end
+
+  def index
+    users = UserService::Base.filter_users(params)
+    render json: users, status: :ok
   end
 
   private
@@ -17,8 +18,4 @@ class UsersController < ApplicationController
   def user_params
     params.permit(:name, :email)
   end
-
-
-
-
 end
